@@ -1,0 +1,22 @@
+{
+    "id": "nodebb-plugin-membership",
+    "name": "Membership",
+    "description": "Membership functionalities and account synchronization with external site/app",
+    "url": "https://github.com/arkabase/nodebb-plugin-membership",
+    "library": "lib/library.js",
+    "staticDirs": {
+        "images": "public/images"
+    },
+    "scss": ["assets/style.scss"],
+    "hooks": [
+        { "hook": "static:app.load", "method": "init" },
+        { "hook": "filter:admin.header.build", "method": "addAdminNav" },
+        { "hook": "filter:navigation.available", "method": "getNavigation" },
+        { "hook": "filter:user.whitelistFields", "method": "whitelistFields" },
+        { "hook": "filter:user.updateProfile", "method": "addLocationDetails" },
+        { "hook": "static:api.routes", "method": "initApiRoutes" }
+    ],
+    "scripts": ["public/client.js"],
+    "languages": "languages",
+    "templates": "templates"
+}
